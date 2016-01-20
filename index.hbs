@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hapi React Transform Boilerplate</title>
+    </head>
+    <body>
+        <div id="react-root">{{{ componentRenderedToString }}}</div>
+        <script type="application/javascript">
+            {{#if initialState}}
+                window.__INITIAL_STATE__ = {{{ initialState }}};
+            {{/if}}
+            {{#if env}}
+                window.env = "{{ env }}";
+            {{/if}}
+        </script>
+        <script src="/static/bundle.js" type="application/javascript"></script>
+    </body>
+</html>
