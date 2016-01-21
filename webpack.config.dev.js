@@ -10,13 +10,18 @@ module.exports = {
         './src/client'
     ],
     output: {
-        path: Path.join(__dirname, 'build/dev'),
+        path: Path.join(__dirname, 'public'),
         filename: 'bundle.js',
         publicPath: '/static/'
     },
     plugins: [
         new Webpack.HotModuleReplacementPlugin(),
-        new Webpack.NoErrorsPlugin()
+        new Webpack.NoErrorsPlugin(),
+        new Webpack.DefinePlugin({
+            'process.env': {
+                'BROWSER': true
+            }
+        })
     ],
     module: {
         loaders: [{

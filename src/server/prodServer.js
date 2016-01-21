@@ -3,20 +3,19 @@
 const Handlebars = require('handlebars');
 const Hapi = require('hapi');
 const HapiReduxRouter = require('hapi-redux-router');
-const HapiWebpackDevMiddleware = require('hapi-webpack-dev-middleware');
-const Vision = require('vision');
+const Inert = require('inert');
 const Redux = require('redux');
+const StaticFileServer = require('./plugins/file-server');
+const Vision = require('vision');
 
 
 const Routes = require('../routes').default;
-const WebpackConfig = require('../../webpack.config.prod.js');
 const counterReducer = require('../screens/Counter/reducer').default;
 const bootstrapAction = require('../screens/Counter/actions').initCounter;
 
 
 const server = new Hapi.Server();
 server.connection({
-    host: 'localhost',
     port: 8080
 });
 
@@ -30,14 +29,10 @@ const plugins = [
         register: Vision
     },
     {
-        register: HapiWebpackDevMiddleware,
-        options: {
-            config: WebpackConfig,
-            options: {
-                noInfo: true,
-                publicPath: WebpackConfig.output.publicPath
-            }
-        }
+        register: Inert
+    },
+    {
+        register: StaticFileServer
     },
     {
         register: HapiReduxRouter,

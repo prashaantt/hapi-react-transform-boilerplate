@@ -6,7 +6,7 @@ exports.register = (server, options, next) => {
     const context = options.params;
 
     server.ext('onPreResponse', (request, reply) => {
-        
+
         return reply.view(template, context);
     });
 

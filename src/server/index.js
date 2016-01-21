@@ -1,10 +1,10 @@
 'use strict';
 
-const StaticTemplateServer = require('./plugins/template-server');
 const Handlebars = require('handlebars');
 const Hapi = require('hapi');
 const HapiWebpackDevMiddleware = require('hapi-webpack-dev-middleware');
 const HapiWebpackHotMiddleware = require('hapi-webpack-hot-middleware');
+const StaticTemplateServer = require('./plugins/template-server');
 const Vision = require('vision');
 
 
@@ -13,7 +13,6 @@ const WebpackConfig = require('../../webpack.config.dev.js');
 
 const server = new Hapi.Server();
 server.connection({
-    host: 'localhost',
     port: 3000
 });
 
@@ -67,5 +66,5 @@ server.start((err) => {
         return;
     }
 
-    console.log('Dev server running at', server.info.uri);
+    console.log('Development server running at', server.info.uri);
 });

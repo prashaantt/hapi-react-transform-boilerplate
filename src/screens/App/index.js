@@ -18,8 +18,9 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <nav><IndexLink to="/" activeStyle={ internals.activeStyle }>Home</IndexLink> | <Link to="about" activeStyle={ internals.activeStyle }>About</Link></nav>
+                <nav><IndexLink to="/" activeStyle={ internals.activeStyle }>Home</IndexLink> | <Link to="/about" activeStyle={ internals.activeStyle }>About</Link></nav>
                 <h1>The Counter App</h1>
+                <hr/>
                 { this.props.children }
             </div>
         );

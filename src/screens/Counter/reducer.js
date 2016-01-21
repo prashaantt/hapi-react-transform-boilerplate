@@ -1,4 +1,4 @@
-const defaultState = 0;
+const defaultState = -1;
 
 
 const counterReducer = (state = defaultState, action) => {
@@ -9,7 +9,7 @@ const counterReducer = (state = defaultState, action) => {
         case 'DECREMENT_COUNTER':
             return state - action.amount;
         case 'INIT_COUNTER':
-            return state + 1;
+            return 0;
         default:
             return state;
     }

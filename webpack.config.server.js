@@ -1,25 +1,32 @@
+const Fs = require('fs');
 const Path = require('path');
 const Webpack = require('webpack');
 
+
+const nodeModules = {};
+Fs.readdirSync('node_modules').forEach((module) => {
+
+    if (module !== '.bin') {
+        nodeModules[module] = 'commonjs ' + module;
+    }
+});
+
+
 module.exports = {
-    devtool: 'source-map',
     entry: [
-        './src/client'
+        './src/server/prodServer'
     ],
+    target: 'node',
+    externals: nodeModules,
     output: {
-        path: Path.join(__dirname, 'public'),
-        filename: 'bundle.js'
+        path: Path.join(__dirname, 'build'),
+        filename: 'serverBundle.js'
     },
     plugins: [
         new Webpack.optimize.OccurenceOrderPlugin(),
-        new Webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        }),
         new Webpack.DefinePlugin({
             'process.env': {
-                'BROWSER': true
+                'NODE_ENV': JSON.stringify('production')
             }
         })
     ],
