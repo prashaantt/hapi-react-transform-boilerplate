@@ -7,9 +7,9 @@ import { createStore, combineReducers } from 'redux';
 import { render } from 'react-dom';
 
 
-const bootstrapAction = require('../screens/Counter/actions').initCounter;
 import counterReducer from '../screens/Counter/reducer';
 import routes from '../routes';
+import { initCounter as bootstrapAction } from '../screens/Counter/actions';
 
 
 const history = createBrowserHistory();
@@ -17,7 +17,7 @@ const reducer = combineReducers({ counter: counterReducer });
 const store = createStore(reducer, window.__INITIAL_STATE__);
 
 
-if (!window.__INITIAL_STATE__ || window.__INITIAL_STATE__ === 'development') {
+if (!window.env || window.env === 'development') {
     store.dispatch(bootstrapAction());
 }
 

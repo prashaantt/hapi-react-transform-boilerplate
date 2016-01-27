@@ -18,9 +18,7 @@ server.connection({
 
 
 const plugins = [
-    {
-        register: Vision
-    },
+    Vision,
     {
         register: HapiWebpackDevMiddleware,
         options: {
@@ -31,9 +29,7 @@ const plugins = [
             }
         }
     },
-    {
-        register: HapiWebpackHotMiddleware
-    },
+    HapiWebpackHotMiddleware,
     {
         register: StaticTemplateServer,
         options: {

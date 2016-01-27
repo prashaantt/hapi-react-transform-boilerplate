@@ -2,14 +2,18 @@ import React from 'react';
 import { IndexLink, Link } from 'react-router';
 
 
-const internals = {};
+const styles = {
+    activeLinkStyle: {
+        color: 'grey',
+        textDecoration: 'none',
+        cursor: 'default',
+        pointerEvents: 'none'
 
-
-internals.activeStyle = {
-    color: 'grey',
-    textDecoration: 'none',
-    cursor: 'default',
-    pointerEvents: 'none'
+    },
+    navSeparator: {
+        paddingLeft: 5,
+        paddingRight: 5
+    }
 };
 
 
@@ -18,7 +22,11 @@ export default class App extends React.Component {
 
         return (
             <div>
-                <nav><IndexLink to="/" activeStyle={ internals.activeStyle }>Home</IndexLink> | <Link to="/about" activeStyle={ internals.activeStyle }>About</Link></nav>
+                <nav>
+                    <IndexLink to="/" activeStyle={ styles.activeLinkStyle }>Home</IndexLink>
+                    <span style={ styles.navSeparator }>|</span>
+                    <Link to="/about" activeStyle={ styles.activeLinkStyle }>About</Link>
+                </nav>
                 <h1>The Counter App</h1>
                 <hr/>
                 { this.props.children }

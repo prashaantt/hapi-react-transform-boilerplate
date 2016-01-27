@@ -25,15 +25,9 @@ const store = Redux.createStore(reducer);
 
 
 const plugins = [
-    {
-        register: Vision
-    },
-    {
-        register: Inert
-    },
-    {
-        register: StaticFileServer
-    },
+    Vision,
+    Inert,
+    StaticFileServer,
     {
         register: HapiReduxRouter,
         options: {

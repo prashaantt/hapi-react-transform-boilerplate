@@ -7,7 +7,7 @@ exports.register = (server, options, next) => {
         method: 'GET',
         handler: {
             directory: {
-                path: './public'
+                path: 'public'
             }
         }
     });

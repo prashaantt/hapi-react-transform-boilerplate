@@ -22,13 +22,13 @@ class Counter extends React.Component {
             <div>
                 <h2>Counter: { counter }</h2>
                 <Clicker
-                    amount={ 1 }
                     type='increment'
+                    amount={ 1 }
                     { ...bindActionCreators(CounterActions, dispatch) }
                 />
                 <Clicker
-                    amount={ 1 }
                     type='decrement'
+                    amount={ 1 }
                     { ...bindActionCreators(CounterActions, dispatch) }
                 />
             </div>
